@@ -2,7 +2,7 @@ import { SignIn } from "@clerk/nextjs"
 import { currentUser } from "@clerk/nextjs/server"
 import { dark } from "@clerk/themes"
 import Image from "next/image"
-import logo from "../../../../public/logo.svg"
+import logo from "../../public/assets/logo.svg"
 
 const MainLayout = async ({
   children
@@ -11,7 +11,9 @@ const MainLayout = async ({
 }) => {
 
   const user = await currentUser()
-  if(!user) {
+  if(!user) 
+    return (
+    
     <main className="flex flex-col items-center p-5 gap-10 animate-fade-in">
     <section className="flex flex-col items-center">
       <Image 
@@ -22,8 +24,9 @@ const MainLayout = async ({
       />
       <h1 className="text-lg font-extrabold lg:text-2xl">Connect, Communicate, Collaborate in Real-Time</h1>
     </section>
-    <div className="flex justify-center items-center h-screen">
+    <div className="mt-3 ">
       <SignIn 
+      routing="hash"
         appearance={
           {
             baseTheme:dark
@@ -32,12 +35,17 @@ const MainLayout = async ({
       />
     </div>
   </main>
-  }
+  )
 
   return (
+      <main className="animate-fade-in">
+        {children}
+      </main>
 
-    
+
   )
+
+
 }
 
 export default MainLayout
