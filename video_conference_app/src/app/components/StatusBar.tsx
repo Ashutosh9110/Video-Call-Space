@@ -5,10 +5,10 @@
 import Image from "next/image"
 
 // Import the DateAndTime component from the components directory
-import DateAndTime from "@/components/DateAndTime";
+import DateAndTime from "@/app/components/DateAndTime";
 
 // Import the custom hook useGetCalls to fetch upcoming calls
-import { useGetCalls } from "@/hooks/useGetCalls";
+import { useGetCalls } from "@/app/hooks/useGetCalls";
 
 
 const StatusBar = () => {
