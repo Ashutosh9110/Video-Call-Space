@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 const DateAndTime = () => {
-    const [time, setTime] = useState(() => {
+    const [ time, setTime] = useState(() => {
         const now = new Date();
         return now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
       });

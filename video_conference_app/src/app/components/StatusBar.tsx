@@ -1,13 +1,9 @@
-// Enable the "use client" directive to indicate this is a client component in Next.js
 'use client'
 
-// Import the Next.js Image component for optimized image rendering
 import Image from "next/image"
 
-// Import the DateAndTime component from the components directory
 import DateAndTime from "@/app/components/DateAndTime";
-
-// Import the custom hook useGetCalls to fetch upcoming calls
+import homeImage from "@/public/assets/homeImage.svg"
 import { useGetCalls } from "@/app/hooks/useGetCalls";
 
 
@@ -43,7 +39,7 @@ const StatusBar = () => {
           <DateAndTime/>
           {/* Display home image */}
           <Image 
-            src='/assets/home-image.svg' 
+            src={homeImage} 
             width={400} 
             height={400} 
             alt="home image" 

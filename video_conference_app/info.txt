@@ -1,0 +1,40 @@
+Can you explain the use of   const pathname = usePathname(); and const isActive = pathname === item.route || pathname.startsWith(${item.route}/);
+
+in the Navbar.tsx
+
+
+const pathname = usePathname();
+usePathname is a Next.js hook from next/navigation.
+It returns the current URL path as a string.
+Example values it could return:
+/ (home page)
+/upcoming (upcoming page)
+/recordings/some-id (nested route under /recordings)
+
+Purpose:
+It helps determine which page the user is currently on.
+
+
+2. const isActive = pathname === item.route || pathname.startsWith(\${item.route}/`);`
+This checks if the current page (pathname) matches the navigation item's route.
+It also checks if the current path starts with item.route/, which allows highlighting active links for subpages.
+
+Breakdown of conditions:
+
+pathname === item.route → Direct match
+
+Example:
+pathname = "/upcoming"
+item.route = "/upcoming"
+✅ Match.
+pathname.startsWith(\${item.route}/`)` → Sub-route match
+
+Example:
+pathname = "/recordings/123"
+item.route = "/recordings"
+✅ This ensures /recordings is active even for /recordings/123.
+
+Final Summary
+cn is a helper function combining clsx and tailwind-merge.
+It simplifies conditional class names and prevents conflicts.
+Used in NavBar to dynamically style active links. 🚀

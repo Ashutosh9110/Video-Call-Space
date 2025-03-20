@@ -1,7 +1,7 @@
 import { SignIn } from "@clerk/nextjs"
-import { dark, neobrutalism } from "@clerk/themes"
+import { dark } from "@clerk/themes"
 import Image from "next/image"
-import logo from "../../../../public/logo.svg"
+import logo from "../../../../public/assets/logo.svg"
 
 const LoginPage = () => {
 

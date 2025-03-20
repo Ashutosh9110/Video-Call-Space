@@ -5,12 +5,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 import { dark } from '@clerk/themes'
 import { cn } from '@/lib/utils';
-import logo from "../../public/assets/logo.svg"
-import home from "../../public/assets/home.svg"
-import upcoming from "../../public/assets/upcoming.svg"
-import previous from "../../public/assets/previous.svg"
-import recordings from "../../public/assets/recordings.svg"
-import myRoom from "../../public/assets/my-room.svg"
+import logo from "@/public/assets/logo.svg"
+import home from "@/public/assets/home.svg"
+import upcoming from "@/public/assets/upcoming.svg"
+import previous from "@/public/assets/previous.svg"
+import recordings from "@/public/assets/recordings.svg"
+import myRoom from "@/public/assets/myRoom.svg"
+
+
 
 
 export const navLinks = [
