@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 
-import DateAndTime from "@/app/components/DateAndTime";
+import DateAndTime from "@/components/DateAndTime";
 import homeImage from "@/public/assets/homeImage.svg"
 import { useGetCalls } from "@/app/hooks/useGetCalls";
 

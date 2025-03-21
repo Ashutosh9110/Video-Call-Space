@@ -1,17 +1,20 @@
+import "react-datepicker/dist/react-datepicker.css";
+import "@stream-io/video-react-sdk/dist/css/styles.css";
+import { Toaster } from "../components/ui/sonner"
+
+
+
 import type { Metadata } from "next";
-import {
-  ClerkProvider,
-  
-} from '@clerk/nextjs'
 import { Geist, Geist_Mono } from "next/font/google";
+
 import "./globals.css";
-// import Navbar from "./components/Navbar";
+import { ClerkProvider } from "@clerk/nextjs";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -19,8 +22,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Let's talk",
-  description: "A Video Conferencing App",
+  title: "Let's Talk",
+  description: "A video conferencing app",
 };
 
 export default function RootLayout({
@@ -34,10 +37,10 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          {/* <Navbar /> */}
           {children}
+          <Toaster />
         </body>
-      </html>
+    </html>
     </ClerkProvider>
   );
 }

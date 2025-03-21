@@ -1,4 +1,4 @@
-import NavBar from "@/app/components/Navbar"
+import NavBar from "@/components/Navbar"
 
 const HomeLayout = async ({
   children

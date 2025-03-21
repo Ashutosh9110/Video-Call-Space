@@ -1,5 +1,5 @@
-import MainMenu from "@/app/components/MainMenu"
-import StatusBar from "@/app/components/StatusBar"
+import MainMenu from "../../../components/MainMenu"
+import StatusBar from "../../../components/StatusBar"
 
 const HomePage = () => {
     return (

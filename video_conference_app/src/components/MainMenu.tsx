@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation"
 import MenuItemCard from "./MenuItemCard"
 import { Button } from "./ui/button"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog"
+// import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../components/ui/dialog"
 import { Textarea } from "./ui/textarea"
 import { useEffect, useState } from "react"
 import DatePicker from "react-datepicker";
@@ -12,6 +12,7 @@ import Loading from "./Loading"
 import { useStreamVideoClient } from "@stream-io/video-react-sdk"
 import { toast } from "sonner"
 import { Input } from "./ui/input"
+import { Dialog, DialogHeader, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from "./ui/dialog"
 
 
 const initialValues = {
@@ -85,9 +86,6 @@ const MainMenu = () => {
         }
         )
       }
-      
-
-      
     } 
 
     useEffect(() => {
@@ -141,7 +139,8 @@ const MainMenu = () => {
       </Dialog>
 
       <Dialog >
-          <DialogTrigger>
+          <DialogTrigger> 
+            {/* // this dialog trigger will make a modal open when the button is clicked */}
             <MenuItemCard
             img="/assets/join-meeting.svg"
             title="Join Meeting"

@@ -20,9 +20,9 @@ const DateAndTime = () => {
           setTime(now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit'}));
           setDate(new Intl.DateTimeFormat('en-US', { dateStyle: 'full' }).format(now));
 
-        }, 1000); // Update every 1 sec
+        }, 1000); 
     
-        return () => clearInterval(intervalId); // Clean up on component unmount
+        return () => clearInterval(intervalId); 
       }, []);
     return (
         <div className="flex flex-col gap-5">
