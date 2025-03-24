@@ -1,7 +1,7 @@
 import { SignUp } from "@clerk/nextjs"
 import { dark } from "@clerk/themes"
 import Image from "next/image"
-import logo from "../../../../public/logo.svg"
+import logo from "../../../../public/assets/logo.svg"
 
 const SignupPage = () => {
 

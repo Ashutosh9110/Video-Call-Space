@@ -4,7 +4,7 @@ import Alert from "@/components/Alert";
 import Loading from "@/components/Loading";
 import MeetingRoom from "@/components/MeetingRoom";
 import MeetingSetup from "@/components/MeetingSetup";
-import { useGetCallById } from "@/hooks/useGetCallById";
+import { useGetCallById } from "@/app/hooks/useGetCallById";
 import { useUser } from "@clerk/nextjs";
 import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
 import { useParams } from "next/navigation";

@@ -21,6 +21,7 @@ const MeetingRoom = () => {
     const pathname = usePathname()  
     const { user } = useUser();
     if(!user) return
+
     const { useCallCallingState } = useCallStateHooks()
     const callingState = useCallCallingState()
     if (callingState !== CallingState.JOINED) return <Loading />;

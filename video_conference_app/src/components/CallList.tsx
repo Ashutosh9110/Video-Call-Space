@@ -1,6 +1,6 @@
 'use client'
 
-import { useGetCalls } from "@/hooks/useGetCalls"
+import { useGetCalls } from "@/app/hooks/useGetCalls"
 import { Call, CallRecording } from "@stream-io/video-react-sdk";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";

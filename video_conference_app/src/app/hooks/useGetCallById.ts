@@ -17,10 +17,14 @@ export const useGetCallById = (id: string | string[]) => {
                 if (calls.length > 0) setCall(calls[0]);
                 setIsCallLoading(false);
 
-            }  catch (error:any) {
-                console.error(error);
-                setIsCallLoading(false);
-              }
+            }  catch (error:unknown) {
+                if (error instanceof Error) {
+                    console.error(error.message);
+                  } else {
+                    console.error(String(error));
+                  }
+                  setIsCallLoading(false);
+                }
         } 
 
         loadCall()
