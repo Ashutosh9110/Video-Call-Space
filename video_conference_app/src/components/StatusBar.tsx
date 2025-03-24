@@ -3,7 +3,8 @@
 import Image from "next/image"
 
 import DateAndTime from "@/components/DateAndTime";
-import homeImage from "@/public/assets/homeImage.svg"
+import homeImage from "../../public/assets/homeImage.svg"
+
 import { useGetCalls } from "@/app/hooks/useGetCalls";
 
 

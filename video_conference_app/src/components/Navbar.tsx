@@ -5,12 +5,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 import { dark } from '@clerk/themes'
 import { cn } from '@/lib/utils';
-import logo from "@/public/assets/logo.svg"
-import home from "@/public/assets/home.svg"
-import upcoming from "@/public/assets/upcoming.svg"
-import previous from "@/public/assets/previous.svg"
-import recordings from "@/public/assets/recordings.svg"
-import myRoom from "@/public/assets/myRoom.svg"
+// import logo from "../../public/assets/logo.svg"
+// import logo from "@/public/assets/logo.svg";
+import home from "../../public/assets/home.svg"
+import upcoming from "../../public/assets/upcoming.svg"
+import previous from "../../public/assets/previous.svg"
+import recordings from "../../public/assets/recordings.svg"
+import myRoom from "../../public/assets/myRoom.svg"
+
 
 
 
@@ -52,7 +54,7 @@ const NavBar = () => {
               {/* Logo */}
               <Link href="/" className="flex items-center gap-1 hover:scale-150 duration-500 ">
                 <Image
-                  src={logo}
+                  src="/assets/logo.svg"
                   width={60}
                   height={60}
                   alt="Let's talk"

@@ -102,7 +102,7 @@ const MainMenu = () => {
             <Dialog >
                 <DialogTrigger >
                     <MenuItemCard
-                            img="/assets/new-meeting.svg"
+                            img="/assets/newMeeting.svg"
                             title="New Meeting"
                             bgColor='bg-orange-500'
                             hoverColor= 'hover:bg-orange-800'
