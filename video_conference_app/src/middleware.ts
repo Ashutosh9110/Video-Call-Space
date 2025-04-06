@@ -1,6 +1,8 @@
-import { clerkMiddleware } from '@clerk/nextjs/server'
+import { authMiddleware } from '@clerk/nextjs'
 
-export default clerkMiddleware()
+export default authMiddleware({
+  publicRoutes: ['/test-env'], // Add any public routes here
+})
 
 export const config = {
   matcher: [

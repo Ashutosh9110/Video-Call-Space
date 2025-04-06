@@ -8,7 +8,6 @@ import Loading from "@/components/Loading";
 
 
 const API_KEY = process.env.NEXT_PUBLIC_STREAM_API_KEY;
-console.log(process.env.NEXT_PUBLIC_STREAM_API_KEY)
 
 const StreamProvider = ({ children }: { children: ReactNode }) => {
 
