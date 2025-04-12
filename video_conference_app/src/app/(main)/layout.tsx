@@ -4,6 +4,7 @@ import { currentUser } from "@clerk/nextjs/server"
 import { neobrutalism } from "@clerk/themes"
 import Image from "next/image"
 import React from "react"
+import { BackgroundLines } from "@/components/ui/background-lines"
 
 const MainLayout = async ({
     children
@@ -13,42 +14,42 @@ const MainLayout = async ({
 ) => {
 
     const user = await currentUser()
-    if(!user)  return(
-            <main className="flex flex-col items-center p-5 gap-10 animate-fade-in">
-    
-                        <section className="flex flex-col items-center">
-                            <Image
-                                src='/assets/logo.svg'
-                                width={100}
-                                height={100}
-                                alt="Logo"
-                                />
-                                <h1 className="text-lg font-extrabold text-sky-1 lg:text-2xl">
-                                Connect, Communicate, Collaborate in Real-Time
-                                </h1>
-                         
-                       </section>
+    if(!user) return(
+        <BackgroundLines>
+            <main className="flex flex-col items-center p-5 gap-10 animate-fade-in relative z-10">
+                <section className="flex flex-col items-center">
+                    <Image
+                        src='/assets/logo.svg'
+                        width={100}
+                        height={100}
+                        alt="Logo"
+                    />
+                    <h1 className="text-lg font-extrabold text-sky-1 lg:text-2xl">
+                        Connect, Communicate, Collaborate in Real-Time
+                    </h1>
+                </section>
     
                 <div className="mt-3">
                     <SignIn
-                    routing="hash"
+                        routing="hash"
                         appearance={{
-                                baseTheme: neobrutalism
-                            }
-                        }
+                            baseTheme: neobrutalism
+                        }}
                     />
                 </div>
             </main>
-        )
-
-    return (
-        <main className="animate-fade-in">
-            <StreamProvider>
-                {children}
-            </StreamProvider>
-        </main>
+        </BackgroundLines>
     )
 
+    return (
+        <BackgroundLines>
+            <main className="animate-fade-in relative z-10">
+                <StreamProvider>
+                    {children}
+                </StreamProvider>
+            </main>
+        </BackgroundLines>
+    )
 }
 
 export default MainLayout
