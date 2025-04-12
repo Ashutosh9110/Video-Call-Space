@@ -130,6 +130,11 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
+/* Apply dark mode by default */
+/* html {
+  @apply dark;
+} */
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

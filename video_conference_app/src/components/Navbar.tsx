@@ -50,7 +50,7 @@ const NavBar = () => {
 
     return (
         <>
-          <nav className="flex justify-between items-center fixed z-50 w-full h-28 bg-gray-200 px-10 gap-4 shadow-2xl">
+          <nav className="flex justify-between items-center fixed z-50 w-full h-28 px-10 gap-4 shadow-2xl bg-black">
               {/* Logo */}
               <Link href="/" className="flex items-center gap-1 hover:scale-150 duration-500 ">
                 <Image
@@ -62,7 +62,7 @@ const NavBar = () => {
               </Link>
 
               {/* Nav Links */}
-              <section className="sticky top-0 flex justify-between text-black ">
+              <section className="sticky top-0 flex justify-between text-white ">
                 <div className="flex flex-1 max-sm:gap-0 sm:gap-6">
                   {navLinks.map((item) => {
                     const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`);
