@@ -4,7 +4,8 @@ import { currentUser } from "@clerk/nextjs/server"
 import { neobrutalism } from "@clerk/themes"
 import Image from "next/image"
 import React from "react"
-import { BackgroundLines } from "@/components/ui/background-lines"
+// import { BackgroundLines } from "@/components/ui/background-lines"
+import { GridBackground } from "@/components/ui/gridBackground"
 
 const MainLayout = async ({
     children
@@ -15,7 +16,8 @@ const MainLayout = async ({
 
     const user = await currentUser()
     if(!user) return(
-        <BackgroundLines>
+        // <BackgroundLines>
+            <GridBackground>
             <main className="flex flex-col items-center p-5 gap-10 animate-fade-in relative z-10">
                 <section className="flex flex-col items-center">
                     <Image
@@ -38,17 +40,20 @@ const MainLayout = async ({
                     />
                 </div>
             </main>
-        </BackgroundLines>
+        {/* </BackgroundLines> */}
+        </GridBackground>
     )
 
     return (
-        <BackgroundLines>
+        // <BackgroundLines>
+        <GridBackground>
             <main className="animate-fade-in relative z-10">
                 <StreamProvider>
                     {children}
                 </StreamProvider>
             </main>
-        </BackgroundLines>
+        {/* </BackgroundLines> */}
+        </GridBackground>
     )
 }
 
