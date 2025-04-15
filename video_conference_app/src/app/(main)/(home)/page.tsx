@@ -9,19 +9,30 @@ const HomePage = () => {
             title: "High Quality Video Conferencing",
             description: "Experience crystal clear video and audio quality with our advanced streaming technology.",
             content: (
-                <div className="flex justify-center items-center h-full w-full rounded-md bg-gradient-to-br from-cyan-500 to-emerald-500 opacity-80">High Quality Video Conferencing</div>
+                <div className="h-full w-full rounded-md flex items-center justify-center overflow-hidden">
+                    <video 
+                        className="h-full w-full object-cover"
+                        autoPlay 
+                        muted 
+                        loop
+                        playsInline
+                    >
+                        <source src="/assets/Videos/video2.mp4.mov" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             )
         },
         {
             title: "Secure and Private",
-            description: "End-to-end encryption ensures your meetings remain confidential and secure.",
+            description: "End-to-end encryption ensures your meetings remain confidential and secure. End-to-end encryption ensures your meetings remain confidential and secure. End-to-end encryption ensures your meetings remain confidential and secure.",
             content: (
                 <div className="flex justify-center items-center h-full w-full rounded-md bg-gradient-to-br from-pink-500 to-indigo-500 opacity-80">Secure and Private</div>
             )
         },
         {
             title: "Seamless Collaboration",
-            description: "Share screens, files, and collaborate in real-time with intuitive tools.",
+            description: "Share screens, files, and collaborate in real-time with intuitive tools. End-to-end encryption ensures your meetings remain confidential and secure.End-to-end encryption ensures your meetings remain confidential and secure.End-to-end encryption ensures your meetings remain confidential and secure.",
             content: (
                 <div className="flex justify-center items-center h-full w-full rounded-md bg-gradient-to-br from-orange-500 to-yellow-500 opacity-80">Seamless Collaboration</div>
             )
