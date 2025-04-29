@@ -1,13 +1,16 @@
 import MainMenu from "../../../components/MainMenu"
 import StatusBar from "../../../components/StatusBar"
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal"
+import one from "../../../../public/assets/images/1.jpg"
+import two from "../../../../public/assets/images/2.jpg"
+import Image from "next/image"
 
 const HomePage = () => {
     // Sample content for StickyScroll
     const features = [
         {
             title: "High Quality Video Conferencing",
-            description: "Experience crystal clear video and audio quality with our advanced streaming technology.",
+            description: "Experience crystal-clear video and immersive audio powered by advanced streaming technology, ensuring smooth, lag-free meetings — even on low-bandwidth connections.",
             content: (
                 <div className="h-full w-full rounded-md flex items-center justify-center overflow-hidden">
                     <video 
@@ -25,16 +28,22 @@ const HomePage = () => {
         },
         {
             title: "Secure and Private",
-            description: "End-to-end encryption ensures your meetings remain confidential and secure. End-to-end encryption ensures your meetings remain confidential and secure. End-to-end encryption ensures your meetings remain confidential and secure.",
+            description: "End-to-end encryption ensures your meetings remain confidential and secure, protecting all audio, video, and shared content from unauthorized access — so only you and your participants can access the conversation.",
             content: (
-                <div className="flex justify-center items-center h-full w-full rounded-md bg-gradient-to-br from-pink-500 to-indigo-500 opacity-80">Secure and Private</div>
+                <div className="h-full w-full">
+									<Image src={one} alt="" className="h-full w-full object-cover rounded-md"/>
+                </div>
             )
         },
         {
             title: "Seamless Collaboration",
-            description: "Share screens, files, and collaborate in real-time with intuitive tools. End-to-end encryption ensures your meetings remain confidential and secure.End-to-end encryption ensures your meetings remain confidential and secure.End-to-end encryption ensures your meetings remain confidential and secure.",
+            description: "Share screens, exchange files, and collaborate in real-time with intuitive tools designed to keep your team connected, productive, and in sync — whether you're across the office or across the globe.",
             content: (
-                <div className="flex justify-center items-center h-full w-full rounded-md bg-gradient-to-br from-orange-500 to-yellow-500 opacity-80">Seamless Collaboration</div>
+                <div className="flex justify-center items-center h-full w-full rounded-md bg-gradient-to-br from-orange-500 to-yellow-500 opacity-80">
+									<div className="h-full w-full">
+										<Image src={two} alt="" className="h-full w-full object-cover rounded-md"/>
+                </div>
+								</div>
             )
         }
     ];

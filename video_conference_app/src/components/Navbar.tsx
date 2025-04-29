@@ -48,7 +48,7 @@ const NavBar = () => {
 
     return (
         <>
-          <nav className="flex justify-between items-center fixed z-50 w-full h-28 px-10 gap-4 shadow-2xl bg-black">
+          <nav className="flex justify-between items-center fixed z-50 w-full h-28 px-10 gap-4 shadow-2xl bg-black bg-opacity-100">
               {/* Logo */}
               <Link href="/" className="flex items-center gap-1 hover:scale-150 duration-500 ">
                 <Image

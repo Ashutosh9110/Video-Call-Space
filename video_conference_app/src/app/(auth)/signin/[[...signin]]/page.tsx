@@ -1,14 +1,14 @@
 import { SignIn } from "@clerk/nextjs"
 import { dark } from "@clerk/themes"
 import Image from "next/image"
-import logo from "../../../../../public/assets/logo.svg"
+// import logo from "../../../../../public/assets/logo.svg"
 
 const LoginPage = () => {
   return (
     <main className="flex flex-col items-center p-5 gap-10">
       <section className="flex flex-col items-center">
         <Image 
-          src={logo} 
+          src="/assets/logo.svg" 
           width={100}
           height={100}
           alt="logo"
