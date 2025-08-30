@@ -2,6 +2,8 @@ import StreamProvider from "@/providers/StreamProvider"
 import { SignIn } from "@clerk/nextjs"
 import { currentUser } from "@clerk/nextjs/server"
 import { neobrutalism } from "@clerk/themes"
+import type { BaseThemeTaggedType } from "@clerk/types";
+
 import Image from "next/image"
 import React from "react"
 // import { BackgroundLines } from "@/components/ui/background-lines"
@@ -35,7 +37,7 @@ const MainLayout = async ({
                     <SignIn
                         routing="hash"
                         appearance={{
-                            baseTheme: neobrutalism
+                            baseTheme: [neobrutalism as BaseThemeTaggedType]
                         }}
                     />
                 </div>

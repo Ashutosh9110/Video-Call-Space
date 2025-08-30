@@ -1,5 +1,7 @@
 import { SignUp } from "@clerk/nextjs"
 import { dark } from "@clerk/themes"
+import type { BaseThemeTaggedType } from "@clerk/types";
+
 import Image from "next/image"
 // import logo from "../../../../public/assets/logo.svg"
 
@@ -18,7 +20,7 @@ const SignupPage = () => {
       <div className="flex justify-center items-center h-screen">
         <SignUp 
           appearance={{
-            baseTheme: dark
+            baseTheme: dark as BaseThemeTaggedType
           }}
         />
       </div>
