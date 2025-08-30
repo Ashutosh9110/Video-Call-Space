@@ -9,19 +9,18 @@ const streamSecretKey = process.env.STREAM_SECRET_KEY;
 
 export const tokenProvider = async () => {
     const user = await currentUser();
-    if (!user) throw new Error('User is not authenticated');
+    // if (!user) throw new Error('User is not authenticated');
     if (!streamApiKey) throw new Error('Stream API key secret is missing');
     if (!streamSecretKey) throw new Error('Stream API secret is missing');
 
     const client = new StreamClient(streamApiKey, streamSecretKey);
-    const userId: string = user.id;
-
+    const userId = user ? user.id : `guest_${crypto.randomUUID()}`;
+    
     // token is valid for an hour
-    const vailidity = 60 * 60;
     const token = client.generateUserToken(
         { 
           user_id: userId, 
-          validity_in_seconds: vailidity 
+          validity_in_seconds: 60 * 60 
         }
       );
 

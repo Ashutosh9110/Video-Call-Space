@@ -1,7 +1,13 @@
 import { authMiddleware } from '@clerk/nextjs'
 
 export default authMiddleware({
-  publicRoutes: ['/test-env'], // Add any public routes here
+  publicRoutes: [
+    '/test-env',
+    '/meeting(.*)',
+    '/meeting/:id'  
+  
+  ], // Add any public routes here
+  
 })
 
 export const config = {

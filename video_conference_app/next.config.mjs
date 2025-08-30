@@ -15,7 +15,8 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.clerk.dev'
       }
-    ]
+    ],
+    unoptimized: true, // This helps with Netlify deployment
   },
   env: {
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,

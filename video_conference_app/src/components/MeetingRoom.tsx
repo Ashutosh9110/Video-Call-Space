@@ -38,15 +38,15 @@ const MeetingRoom = () => {
       };
 
       return (
-        <section className="relative h-screen w-full overflow-hidden pt-4 text-white">
+        <section className="relative h-screen w-full overflow-hidden pt-4 text-white ">
 
-            <Button className='ml-5  font-semibold bg-gray-900 hover:scale-110 rounded-3xl'
+            <Button className='ml-5 font-semibold bg-white hover:scale-110 rounded-3xl cursor-pointer '
                 onClick={() => {
                     const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}${pathname}`
                     navigator.clipboard.writeText(meetingLink);
                     toast('Meeting Link Copied',{ 
                     duration: 3000,
-                    className: '!bg-gray-300 !rounded-3xl !py-8 !px-5 !justify-center',
+                    className: '!bg-white !rounded-4xl !py-8 !px-5 !justify-center !text-black !text-lg',
                 });
                 }}
                 >
