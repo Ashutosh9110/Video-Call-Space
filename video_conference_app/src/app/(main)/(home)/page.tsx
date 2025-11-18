@@ -1,12 +1,11 @@
 import MainMenu from "../../../components/MainMenu"
 import StatusBar from "../../../components/StatusBar"
-import { StickyScroll } from "@/components/ui/sticky-scroll-reveal"
+// import { StickyScroll } from "@/components/ui/sticky-scroll-reveal"
 import one from "../../../../public/assets/images/1.jpg"
 import two from "../../../../public/assets/images/2.jpg"
 import Image from "next/image"
 
 const HomePage = () => {
-    // Sample content for StickyScroll
     const features = [
         {
             title: "High Quality Video Conferencing",
@@ -56,8 +55,8 @@ const HomePage = () => {
             </div>
             
             <div className="w-full max-w-7xl px-4 mt-20 mb-10">
-                <h2 className="text-2xl font-bold mb-6 text-center">Our Features</h2>
-                <StickyScroll content={features} />
+                {/* <h2 className="text-2xl font-bold mb-6 text-center">Our Features</h2> */}
+                {/* <StickyScroll content={features} /> */}
             </div>
         </div>
     )
