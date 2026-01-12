@@ -29,9 +29,9 @@ const HomePage = () => {
             title: "Secure and Private",
             description: "End-to-end encryption ensures your meetings remain confidential and secure, protecting all audio, video, and shared content from unauthorized access — so only you and your participants can access the conversation.",
             content: (
-                <div className="h-full w-full">
-									<Image src={one} alt="" className="h-full w-full object-cover rounded-md"/>
-                </div>
+            <div className="h-full w-full">
+			    <Image src={one} alt="" className="h-full w-full object-cover rounded-md"/>
+            </div>
             )
         },
         {
