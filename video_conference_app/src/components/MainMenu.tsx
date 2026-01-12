@@ -114,7 +114,7 @@ const MainMenu = () => {
             <DialogTitle
             className='text-3xl font-black leading-relaxed text-center '
             >
-              Start an Instant Meeting 🤝
+              Start an Instant Meeting
               </DialogTitle>
             <DialogDescription className='flex flex-col items-center '>
 
