@@ -28,19 +28,7 @@ export default function Menu() {
         </div>
       </div>
 
-      <div className="menu-items absolute inset-0 flex opacity-0 pointer-events-none">
-        <div className="flex-1 flex flex-col justify-center items-center gap-8">
-          {["Manifesto","Spatial Journey","Material Archive","Visit Atelier","Rituals"].map(t => (
-            <a key={t} className="menu-link text-4xl uppercase">{t}</a>
-          ))}
-        </div>
 
-        <div className="flex-1 flex flex-col justify-center items-center gap-8 font-serif text-3xl">
-          {["Tactile Vault","Form Experiments","Carbon Networks","Shadow Library","Collections"].map(t => (
-            <a key={t}>{t}</a>
-          ))}
-        </div>
-      </div>
     </div>
   )
 }

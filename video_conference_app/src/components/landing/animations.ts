@@ -5,18 +5,23 @@ gsap.registerPlugin(CustomEase)
 CustomEase.create("hop", "0.85, 0, 0.15, 1")
 
 export function initMenuAnimations() {
-  const toggle = document.querySelector(".nav-toggle-btn")
   const menu = document.querySelector(".menu")
-  if (!toggle || !menu) return
+  if (!menu) return
 
   let open = false
+  let isAnimating = false
 
   const tl = gsap.timeline({
     paused: true,
+    onStart() {
+      isAnimating = true
+    },
     onComplete() {
+      isAnimating = false
       window.dispatchEvent(new CustomEvent("menu:open"))
     },
     onReverseComplete() {
+      isAnimating = false
       window.dispatchEvent(new CustomEvent("menu:close"))
     }
   })
@@ -39,10 +44,19 @@ export function initMenuAnimations() {
       ease: "power3.out"
     }, "-=0.3")
 
-  toggle.addEventListener("click", () => {
+  const clickHandler = () => {
+    if (isAnimating) return
+
     if (!open) tl.play()
     else tl.reverse()
-    open = !open
-  })
-}
 
+    open = !open
+  }
+
+  // Global click listener
+  window.addEventListener("click", clickHandler)
+
+  return () => {
+    window.removeEventListener("click", clickHandler)
+  }
+}

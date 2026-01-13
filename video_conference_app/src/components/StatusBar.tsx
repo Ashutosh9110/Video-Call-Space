@@ -41,9 +41,7 @@ const StatusBar = () => {
         Upcoming Meeting at:
         <p className="text-lg font-semibold text-gray-800">{formattedDate}</p>
       </h2>
-      {/* Render the DateAndTime component */}
       <DateAndTime/>
-      {/* Display an image with specific styles */}
       <Image 
         src='/assets/home-image.svg' 
         width={400} 
