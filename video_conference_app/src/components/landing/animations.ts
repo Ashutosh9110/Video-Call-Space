@@ -10,15 +10,14 @@ export function initMenuAnimations() {
   if (!toggle || !menu) return
 
   let open = false
-  let hasOpenedOnce = false
 
   const tl = gsap.timeline({
     paused: true,
     onComplete() {
-      if (!hasOpenedOnce) {
-        hasOpenedOnce = true
-        window.dispatchEvent(new Event("experience:open"))
-      }
+      window.dispatchEvent(new CustomEvent("menu:open"))
+    },
+    onReverseComplete() {
+      window.dispatchEvent(new CustomEvent("menu:close"))
     }
   })
 
@@ -46,3 +45,4 @@ export function initMenuAnimations() {
     open = !open
   })
 }
+

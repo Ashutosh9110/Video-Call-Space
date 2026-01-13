@@ -1,11 +1,16 @@
+"use client"
+
 import MainMenu from "../../../components/MainMenu"
 import StatusBar from "../../../components/StatusBar"
 // import { StickyScroll } from "@/components/ui/sticky-scroll-reveal"
 import one from "../../../../public/assets/images/1.jpg"
 import two from "../../../../public/assets/images/2.jpg"
 import Image from "next/image"
+import { useMenuState } from "@/app/hooks/useMenuState"
 
 const HomePage = () => {
+    const menuOpen = useMenuState()
+
     const features = [
         {
             title: "High Quality Video Conferencing",
@@ -48,11 +53,21 @@ const HomePage = () => {
     ];
 
     return (
-        <div className="flex flex-col gap-32 items-center max-md:gap-10 animate-fade-in">
-            <div className="flex flex-col gap-32 pt-20 pl-10 items-center max-md:gap-10 md:flex-row w-full">
-                <StatusBar/>
-                <MainMenu/>
-            </div>
+            <div className="flex flex-col gap-32 items-center">
+                
+                <div className="flex flex-col gap-32 pt-20 pl-10 items-center md:flex-row w-full">
+                    <StatusBar />
+
+                    {menuOpen && (
+                        <div
+                        className={`transition-all duration-700 ${
+                            menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
+                        }`}
+                        >
+                        <MainMenu />
+                        </div>
+                    )}
+                </div>
             
             <div className="w-full max-w-7xl px-4 mt-20 mb-10">
                 {/* <h2 className="text-2xl font-bold mb-6 text-center">Our Features</h2> */}
