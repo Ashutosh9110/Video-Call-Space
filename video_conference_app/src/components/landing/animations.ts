@@ -18,7 +18,7 @@ export function initMenuAnimations() {
     },
     onComplete() {
       isAnimating = false
-      window.dispatchEvent(new CustomEvent("menu:open"))
+      window.dispatchEvent(new CustomEvent("menu:done"))
     },
     onReverseComplete() {
       isAnimating = false
@@ -53,10 +53,12 @@ export function initMenuAnimations() {
     open = !open
   }
 
-  // Global click listener
   window.addEventListener("click", clickHandler)
 
   return () => {
     window.removeEventListener("click", clickHandler)
   }
 }
+
+
+

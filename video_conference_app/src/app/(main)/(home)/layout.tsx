@@ -19,7 +19,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   }, [])
 
   return (
-    <main className="relative w-full overflow-x-hidden bg-[#1a1a1a]">
+    <main className="relative w-full min-h-screen overflow-hidden bg-[#1a1a1a]">
       <div
         className="fixed inset-0 -z-10 bg-cover bg-center"
         style={{ backgroundImage: "url(/assets/images/hero.jpg)" }}
@@ -29,7 +29,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
 
       <Nav />
 
-      <section className="relative z-10">
+      <section className="relative z-10 min-h-screen pt-16">
         {children}
       </section>
     </main>

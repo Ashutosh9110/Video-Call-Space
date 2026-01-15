@@ -16,9 +16,7 @@ export default function Menu() {
     }
   }, [])
 
-  // Add click handler to the menu
   const handleMenuClick = () => {
-    // Dispatch event that HomePage can listen to
     window.dispatchEvent(new CustomEvent("menu:trigger-animation"))
   }
 
