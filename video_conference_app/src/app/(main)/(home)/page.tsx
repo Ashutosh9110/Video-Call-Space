@@ -1,31 +1,34 @@
-"use client"
+"use client"  
 
 import { useState } from "react"
 import { useMenuState } from "@/app/hooks/useMenuState"
 import { startDoorAnimation } from "@/components/landing/startDoorAnimation"
+import { useRouter } from "next/navigation"
 
 const HomePage = () => {
   const menuOpen = useMenuState()
+  const [showAnimation, setShowAnimation] = useState(false)
+  const router = useRouter();
 
   const handleOverlayClick = () => {
-    // your existing overlay animation logic
+    if (showAnimation) return
+    setShowAnimation(true)
   }
 
-  const handleStartExperience = (e) => {
+  const handleStartExperience = (e: React.MouseEvent) => {
     e.stopPropagation()
-    startDoorAnimation()
+    startDoorAnimation(() => {
+      router.push("/dashboard");
+    });
   }
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-
-      {/* ===== Door Animation Layer ===== */}
       <div className="fixed inset-0 z-[60] pointer-events-none hidden door-layer">
         <div className="absolute left-0 top-0 w-1/2 h-full bg-black door-left" />
         <div className="absolute right-0 top-0 w-1/2 h-full bg-black door-right" />
       </div>
 
-      {/* ===== Menu Overlay ===== */}
       {menuOpen && (
         <div
           className="fixed inset-0 z-[40] pt-20 cursor-pointer"
@@ -44,21 +47,19 @@ const HomePage = () => {
         </div>
       )}
 
-      {/* ===== Main Content ===== */}
-      <div className="relative z-[50] flex min-h-screen flex-col items-center justify-center">
+      <div className="hero-content relative z-[50] flex min-h-screen flex-col items-center justify-center">
         <h1 className="text-6xl font-bold text-white mb-8">Connect Anywhere</h1>
-        <p className="text-xl text-gray-300 text-center max-w-2xl">
-          Seamless video conferencing for the modern world
-        </p>
-        <button
-          onClick={handleStartExperience}
-          className="mt-8 px-6 py-3 bg-white text-black rounded-full font-semibold"
-        >
-          Start Experience
-        </button>
+          <p className="text-xl text-gray-300 text-center max-w-2xl">
+           Seamless video conferencing for the modern world
+          </p>
+          <button
+            onClick={handleStartExperience}
+            className="mt-8 px-6 py-3 bg-white text-black rounded-full font-semibold"
+            >
+            Start Experience
+          </button>
       </div>
     </div>
-  )
-}
-
+  );
+};
 export default HomePage

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import MenuItemCard from "./MenuItemCard"
 import { Button } from "./ui/button"
 import { Textarea } from "./ui/textarea"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import DatePicker from "react-datepicker";
 import { useUser } from "@clerk/nextjs"
 import Loading from "./Loading"
@@ -12,6 +12,7 @@ import { useStreamVideoClient } from "@stream-io/video-react-sdk"
 import { toast } from "sonner"
 import { Input } from "./ui/input"
 import { Dialog, DialogHeader, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from "./ui/dialog"
+import gsap from "gsap";
 // import { join-meeting } from ""
 
 
@@ -27,9 +28,15 @@ const MainMenu = () => {
     const [values, setValues] = useState(initialValues);
     const [meetingState, setMeetingState] = useState< 'Schedule' | 'Instant' | undefined>(undefined);
     const client = useStreamVideoClient();
+    const containerRef = useRef<HTMLDivElement>(null);
 
-
-
+    useEffect(() => {
+      gsap.fromTo(
+        containerRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+      );
+    }, []);
 
     const createMeeting = async () => {
       if(!user) return router.push('/login')
@@ -98,7 +105,9 @@ const MainMenu = () => {
 
 
     return (
-        <section className="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
+        <section 
+          ref={containerRef}
+          className="grid grid-cols-2 gap-3 max-sm:grid-cols-1">
             <Dialog >
                 <DialogTrigger >
                     <MenuItemCard
