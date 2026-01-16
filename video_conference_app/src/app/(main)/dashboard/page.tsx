@@ -1,12 +1,10 @@
 
-import MainMenu from "@/components/MainMenu";
+import DashboardMenu from "@/components/dashboard/DashboardMenu";
 
 const DashboardPage = () => {
   return (
-    <div className="p-6">
-      <MainMenu />
-    </div>
-  );
-};
+    <DashboardMenu />
+  )
+}
 
-export default DashboardPage;
+export default DashboardPage

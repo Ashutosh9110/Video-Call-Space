@@ -149,7 +149,6 @@ const MainMenu = () => {
 
       <Dialog >
           <DialogTrigger> 
-            {/* // this dialog trigger will make a modal open when the button is clicked */}
             <MenuItemCard
             img="/assets/join-meeting.svg"
             title="Join Meeting"
@@ -251,3 +250,5 @@ const MainMenu = () => {
 }
 
 export default MainMenu
+
+
