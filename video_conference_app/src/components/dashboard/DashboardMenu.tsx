@@ -7,19 +7,6 @@ import { useStreamVideoClient } from "@stream-io/video-react-sdk"
 import { toast } from "sonner"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
-
-// import { Button } from "./ui/button"
-// import { Textarea } from "./ui/textarea"
-// import { Input } from "./ui/input"
-// import {
-//   Dialog,
-//   DialogHeader,
-//   DialogContent,
-//   DialogTrigger,
-//   DialogTitle,
-//   DialogDescription,
-// } from "./ui/dialog"
-
 import "./dashboard-menu.css"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog"
 import { Button } from "../ui/button"
@@ -46,7 +33,19 @@ export default function DashboardMenu() {
     "Schedule" | "Instant" | null
   >(null)
 
+  const SectionVideo = ({ src }: { src: string }) => (
+    <video
+      className="absolute inset-0 w-full h-full object-cover"
+      src={src}
+      autoPlay
+      muted
+      loop
+      playsInline
+    />
+  )
+  
 
+  /* ----------------------------- MEETING LOGIC ----------------------------- */
 
   const createMeeting = async () => {
     if (!user) return router.push("/login")
@@ -107,13 +106,13 @@ export default function DashboardMenu() {
     if (meetingState) createMeeting()
   }, [meetingState])
 
+    /* --------------------------- NAV ANIMATION --------------------------- */
 
   useEffect(() => {
     const nav = navRef.current
     if (!nav) return
 
     const items = Array.from(nav.querySelectorAll("a"))
-
     const animate = (from: number, to: number) => {
       if (animRef.current) clearInterval(animRef.current)
 
@@ -268,10 +267,11 @@ export default function DashboardMenu() {
       </header>
 
       {/* -------------------- INSTANT MEETING -------------------- */}
-      <section className="container" id="section1">
-        <img src="/assets/images/3.avif" alt="" />
 
-        <div className="overlay-panel">
+        <section className="container" id="section1">
+          <SectionVideo src="https://res.cloudinary.com/djm65usjg/video/upload/v1768577542/1_g3a2vx.mp4" />
+
+          <div className="overlay-panel">
           <Dialog>
             <DialogTrigger asChild>
               <Button className="primary-action-btn">
@@ -309,10 +309,10 @@ export default function DashboardMenu() {
 
       {/* -------------------- JOIN MEETING -------------------- */}
 
-      <section className="container" id="section2">
-        <img src="/assets/images/4.avif" alt="" />
+          <section className="container" id="section2">
+            <SectionVideo src="https://res.cloudinary.com/djm65usjg/video/upload/v1768577543/8_gpoh72.mp4" />
 
-        <div className="overlay-panel">
+            <div className="overlay-panel">
           <Dialog>
             <DialogTrigger asChild>
               <Button className="primary-action-btn">Join Meeting</Button>
@@ -355,10 +355,10 @@ export default function DashboardMenu() {
 
       {/* -------------------- SCHEDULE MEETING -------------------- */}
 
-      <section className="container" id="section3">
-        <img src="/assets/images/5.avif" alt="" />
+          <section className="container" id="section3">
+          <SectionVideo src="https://res.cloudinary.com/djm65usjg/video/upload/v1768577565/2_qijwe0.mp4" />
 
-        <div className="overlay-panel">
+          <div className="overlay-panel">
           <Dialog>
             <DialogTrigger asChild>
               <Button className="primary-action-btn">Schedule Meeting</Button>
@@ -409,7 +409,7 @@ export default function DashboardMenu() {
       {/* -------------------- RECORDINGS -------------------- */}
 
       <section className="container" id="section4">
-        <img src="/assets/images/6.avif" alt="" />
+        <SectionVideo src="https://res.cloudinary.com/djm65usjg/video/upload/v1768577573/7_mxh3xi.mp4" />
 
         <div className="overlay-panel">
           <Button

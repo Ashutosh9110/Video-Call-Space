@@ -263,6 +263,17 @@ nav > ul li a.active {
 
 
 
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
+.container video,
+.cld-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 
 
