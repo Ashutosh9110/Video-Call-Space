@@ -19,15 +19,12 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    // Helper to clear timeouts on cleanup
     const addTimeout = (timeout: NodeJS.Timeout) => {
       timeoutsRef.current.push(timeout);
     };
 
-    // GSAP text animations
     const animateTextColumns = () => {
       const tl = gsap.timeline();
-      // Animate text columns with stagger
       tl.to(".text-item", {
         opacity: 1,
         y: 0,
@@ -39,7 +36,6 @@ const HomePage = () => {
           from: "start",
         },
       })
-        // Animate rotated text
         .to(
           ".rotated-item",
           {
@@ -52,7 +48,6 @@ const HomePage = () => {
           "-=2"
         );
     };
-    // Start text animation after a brief delay
     addTimeout(setTimeout(animateTextColumns, 200));
 
     const container = document.querySelector(".hero-section") as HTMLElement;
@@ -106,7 +101,6 @@ const HomePage = () => {
       "https://assets.codepen.io/7558/cr-blurry-orange-small-014.jpg",
     ];
 
-    // Types for Pattern definitions
     type PatternEffect = {
       name: string;
       create: (
@@ -484,10 +478,7 @@ const HomePage = () => {
           smoothedSpeed * 100
         ).toFixed(0)}%`;
         speedIndicator.style.opacity = "1";
-        // Clear previous timeout handled by the helper logic is tricky here because
-        // we are assigning to window.speedTimeout in the original code.
-        // We'll use a local variable on the component if we want, or just let it fly for now.
-        // For strict React, we should use a ref.
+
         (window as any).speedTimeout = setTimeout(
           () => (speedIndicator.style.opacity = "0"),
           1500
@@ -559,7 +550,6 @@ const HomePage = () => {
           isFlame: true,
         });
       } else {
-        // Pattern effects
         const imageContainer = createImageElement();
         const rect = container.getBoundingClientRect();
         const x = mouseX - rect.left,
@@ -576,7 +566,6 @@ const HomePage = () => {
 
         const fragments = pattern.create(imageContainer, imageSrc, size);
 
-        // Add fragments to container
         fragments.forEach((fragment) => {
           imageContainer.appendChild(fragment.element);
         });
@@ -651,7 +640,6 @@ const HomePage = () => {
         const imgObj = trail.shift()!;
 
         if (imgObj.isFlame) {
-          // Original flame removal
           imgObj.element.style.transition = `transform ${config.outDuration}ms ${config.outEasing}`;
           imgObj.element.style.transform = `translate(-50%, -50%) rotate(${
             (imgObj.rotation || 0) + 360
@@ -662,7 +650,6 @@ const HomePage = () => {
             }, config.outDuration)
           );
         } else {
-          // Pattern removal
           const { element, fragments, pattern: imagePattern } = imgObj;
           const pattern = PATTERNS[imagePattern!];
 
@@ -691,7 +678,6 @@ const HomePage = () => {
       }
     };
 
-    // Effect switching
     const effectLinks = document.querySelectorAll("[data-effect]");
     effectLinks.forEach((link) => {
       const clickHandler = (e: Event) => {
@@ -703,7 +689,6 @@ const HomePage = () => {
       link.addEventListener("click", clickHandler);
     });
 
-    // Mouse events
     const mouseMoveHandler = (e: MouseEvent) => {
       prevMouseX = mouseX;
       prevMouseY = mouseY;
@@ -718,7 +703,6 @@ const HomePage = () => {
     };
     document.addEventListener("mousemove", mouseMoveHandler);
 
-    // Touch events
     const touchStartHandler = (e: TouchEvent) => {
       const touch = e.touches[0];
       prevMouseX = mouseX;
@@ -762,7 +746,6 @@ const HomePage = () => {
     container.addEventListener("touchend", touchEndHandler);
     document.addEventListener("touchstart", touchStartDocumentHandler);
 
-    // Scroll handlers
     const scrollHandler1 = () => {
       isCursorInContainer = isInContainer(mouseX, mouseY);
       if (isCursorInContainer) {
@@ -791,7 +774,6 @@ const HomePage = () => {
     window.addEventListener("scroll", scrollHandler1, { passive: true });
     window.addEventListener("scroll", scrollHandler2, { passive: true });
 
-    // Main animation loop
     const animate = () => {
       if (isMoving || isTouching || isScrolling) createTrailImage();
       removeOldImages();
@@ -799,7 +781,6 @@ const HomePage = () => {
     };
     animationRef.current = requestAnimationFrame(animate);
 
-    // Cleanup
     return () => {
       document.removeEventListener("mouseover", mouseOverHandler);
       document.removeEventListener("mousemove", mouseMoveHandler);
@@ -818,7 +799,6 @@ const HomePage = () => {
       (window as any).moveTimeout && clearTimeout((window as any).moveTimeout);
       (window as any).scrollTimeout && clearTimeout((window as any).scrollTimeout);
 
-      // Clean up trail images
       const images = document.querySelectorAll(".trail-img, .trail-image");
       images.forEach((img) => img.remove());
     };
@@ -826,7 +806,7 @@ const HomePage = () => {
 
   return (
     <div className="bg-black min-h-screen">
-       <div className="fixed inset-0 z-[60] pointer-events-none hidden door-layer">
+       <div className="fixed inset-0 z-[60] pointer-events-none door-layer" style={{ display: "none" }}>
         <div className="absolute left-0 top-0 w-1/2 h-full bg-black door-left" />
         <div className="absolute right-0 top-0 w-1/2 h-full bg-black door-right" />
       </div>

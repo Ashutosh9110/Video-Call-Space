@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Nav from "@/components/landing/Nav"
 import { initMenuAnimations } from "@/components/landing/animations"
 
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
@@ -27,7 +26,6 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
 
       <div className="fixed inset-0 bg-black/30 -z-10" />
 
-      <Nav />
 
       <section className="relative z-10 min-h-screen pt-16">
         {children}

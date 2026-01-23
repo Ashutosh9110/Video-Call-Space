@@ -1,9 +1,8 @@
-// components/landing/startDoorAnimation.ts
 import gsap from "gsap"
 
 export const startDoorAnimation = (onComplete: () => void) => {
   const tl = gsap.timeline({
-    onComplete, 
+    onComplete,
   })
 
   tl.set(".door-layer", { display: "flex" })
@@ -15,18 +14,19 @@ export const startDoorAnimation = (onComplete: () => void) => {
     ease: "power2.out",
   })
 
-  tl.to(".door-left", {
+  tl.fromTo(".door-left", {
     xPercent: -100,
+  }, {
+    xPercent: 0,
     duration: 1,
     ease: "power4.inOut",
-  }, 0.3).to(
-      ".door-right",
-  {
+  }, 0.3).fromTo(".door-right", {
     xPercent: 100,
+  }, {
+    xPercent: 0,
     duration: 1,
     ease: "power4.inOut",
   },
-  0.3 
+    0.3
   )
-  tl.set(".door-layer", { display: "none" });
 }
