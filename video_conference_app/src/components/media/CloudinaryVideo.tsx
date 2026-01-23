@@ -21,7 +21,7 @@ export default function CloudinaryVideo({
         muted
         loop
         controls={false}
-        playsInline
+        playsinline
         preload="auto"
         width="1920"
         height="1080"
