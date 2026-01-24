@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { startDoorAnimation } from "@/components/landing/startDoorAnimation";
+import DoorTransition from "@/components/landing/DoorTransition";
 import { useRouter } from "next/navigation";
 import "./home.css";
 
@@ -10,45 +10,58 @@ const HomePage = () => {
   const router = useRouter();
   const animationRef = useRef<number | null>(null);
   const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const handleStartExperience = (e: React.MouseEvent) => {
     e.stopPropagation();
-    startDoorAnimation(() => {
-      router.push("/dashboard");
-    });
+    setIsTransitioning(true);
   };
 
   useEffect(() => {
+    let ctx: gsap.Context;
+    
+    ctx = gsap.context(() => {
+      const tl = gsap.timeline({ delay: 0.1 });
+      
+      tl.fromTo(".text-item", 
+        { 
+          opacity: 0, 
+          y: 20, 
+          filter: "blur(10px)" 
+        },
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.8,
+          ease: "power2.out",
+          stagger: {
+            amount: 3,
+            from: "start",
+          },
+        }
+      )
+      .fromTo(
+        ".rotated-item",
+        {
+          opacity: 0,
+          filter: "blur(10px)"
+        },
+        {
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.8,
+          ease: "power2.out",
+          stagger: 0.2,
+        },
+        "-=2"
+      );
+    }, containerRef);
+
     const addTimeout = (timeout: NodeJS.Timeout) => {
       timeoutsRef.current.push(timeout);
     };
-
-    const animateTextColumns = () => {
-      const tl = gsap.timeline();
-      tl.to(".text-item", {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        duration: 0.8,
-        ease: "power2.out",
-        stagger: {
-          amount: 3,
-          from: "start",
-        },
-      })
-        .to(
-          ".rotated-item",
-          {
-            opacity: 1,
-            filter: "blur(0px)",
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.2,
-          },
-          "-=2"
-        );
-    };
-    addTimeout(setTimeout(animateTextColumns, 200));
 
     const container = document.querySelector(".hero-section") as HTMLElement;
     const speedIndicator = document.querySelector(
@@ -801,17 +814,21 @@ const HomePage = () => {
 
       const images = document.querySelectorAll(".trail-img, .trail-image");
       images.forEach((img) => img.remove());
+      
+      // Revert GSAP context
+      ctx.revert();
     };
   }, []);
 
   return (
-    <div className="bg-black min-h-screen">
-       <div className="fixed inset-0 z-[60] pointer-events-none door-layer" style={{ display: "none" }}>
-        <div className="absolute left-0 top-0 w-1/2 h-full bg-black door-left" />
-        <div className="absolute right-0 top-0 w-1/2 h-full bg-black door-right" />
-      </div>
+    <div ref={containerRef} className="bg-black min-h-screen">
+      <DoorTransition 
+        isTransitioning={isTransitioning} 
+        onComplete={() => router.push("/dashboard")} 
+      />
+      <div className="hero-content w-full h-full">
       <header>
-        <div className="container">
+        <div className="home-container">
           <div className="logo-container">
             <div className="logo-circles">
               <div className="circle circle-1"></div>
@@ -857,13 +874,13 @@ const HomePage = () => {
           <div className="social">
             <ul>
               <li>
-                <a href="https://instagram.com/filipz__">Instagram</a>
+                <a href="https://instagram.com">Instagram</a>
               </li>
               <li>
-                <a href="https://x.com/filipz">X / Twitter</a>
+                <a href="https://x.com/">X / Twitter</a>
               </li>
               <li>
-                <a href="https://linkedin.com/in/filipzrnzevic">LinkedIn</a>
+                <a href="https://linkedin.com">LinkedIn</a>
               </li>
             </ul>
           </div>
@@ -1014,10 +1031,11 @@ const HomePage = () => {
         </div>
         <div className="speed-indicator"></div>
 
-        <button onClick={handleStartExperience} className="cta-button">
+      <button onClick={handleStartExperience} className="cta-button">
           Let's Get Started
         </button>
       </section>
+      </div> 
     </div>
   );
 };

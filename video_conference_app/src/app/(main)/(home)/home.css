@@ -44,7 +44,7 @@
    Ideally we'd wrap this in a container class, but the JS logic targets body elements slightly. */
 
 /* Reset for this page context */
-.container {
+.home-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -405,7 +405,7 @@ header a.active::after {
     padding: 1rem;
   }
 
-  .container {
+  .home-container {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.25rem;
